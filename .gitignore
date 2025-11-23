@@ -35,12 +35,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-# Spring Boot application configs
-src/main/resources/application*.yml
-src/main/resources/application*.properties
-
-# 환경 변수
-.env
-.env.*
-
