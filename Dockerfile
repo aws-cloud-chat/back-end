@@ -4,16 +4,17 @@
 FROM gradle:8.7-jdk21-alpine AS builder
 WORKDIR /app
 
-# 캐싱 최적화를 위해 먼저 gradle 파일만 복사
+# Gradle 캐싱을 위해 필요한 파일만 먼저 복사
 COPY build.gradle settings.gradle ./
 COPY gradle ./gradle
 
 # 의존성 캐싱
-RUN gradle dependencies --no-daemon || return 0
+RUN gradle dependencies --no-daemon || true
 
-# 이후 전체 소스 복사
+# 이후 전체 프로젝트 복사
 COPY . .
 
+# 테스트 제외하고 빌드 (CI/CD 환경 고려)
 RUN gradle clean build -x test --no-daemon
 
 
@@ -23,18 +24,21 @@ RUN gradle clean build -x test --no-daemon
 FROM bellsoft/liberica-openjdk-alpine:21
 WORKDIR /app
 
-RUN apk update && apk add --no-cache ca-certificates
+# 필수 패키지 설치 + 타임존 세팅
+RUN apk update && \
+    apk add --no-cache tzdata ca-certificates && \
+    cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
+    echo "Asia/Seoul" > /etc/timezone && \
+    apk del tzdata
 
-# tmp 디렉토리 설정
+# JVM 임시 폴더 (upload, temp cache 안정성)
 RUN mkdir -p /app/tmp
 ENV JAVA_TOOL_OPTIONS="-Djava.io.tmpdir=/app/tmp"
 
-# 빌드 산출물 복사
+# 빌드된 jar 복사
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
-
-# JVM 타임존 설정 추가
+# JVM timezone 설정 + 실행
 ENTRYPOINT ["java", "-Duser.timezone=Asia/Seoul", "-jar", "app.jar"]
