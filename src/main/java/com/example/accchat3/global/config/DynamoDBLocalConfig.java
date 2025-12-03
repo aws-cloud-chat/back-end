@@ -1,10 +1,15 @@
+package com.example.accchat3.global.config;
+
 import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
-public class DynamoDBConfig {
+@Profile("test")
+public class DynamoDBLocalConfig {
     @PostConstruct
     public void init() {
+        Amazon
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder
                 .standard()
                 .withEndpointConfiguration(
@@ -15,6 +20,7 @@ public class DynamoDBConfig {
                 )
                 .build();
 
+        // 로컬 테스트 테이블 생성
         CreateTableRequest req = new CreateTableRequest()
                 .withTableName("User")
                 .withKeySchema(new KeySchemaElement("userId", KeyType.HASH))
