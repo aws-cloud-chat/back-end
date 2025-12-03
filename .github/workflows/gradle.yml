@@ -23,14 +23,9 @@ jobs:
       - name: Setup Gradle Cache
         uses: gradle/actions/setup-gradle@v4
 
-      # DynamoDB Local 실행
-      - name: Start DynamoDB Local
-        run: |
-          docker run -d -p 8000:8000 --name dynamodb amazon/dynamodb-local
-
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
-      # 테스트 포함 실행
-      - name: Run Gradle Build
-        run: ./gradlew clean build --no-daemon
+      # DB 설정 전 test 제외
+      - name: Run Gradle Build (skip tests)
+        run: ./gradlew clean build -x test —no-daemon
