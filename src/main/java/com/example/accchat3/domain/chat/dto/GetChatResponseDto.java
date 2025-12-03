@@ -13,4 +13,5 @@ public class GetChatResponseDto {
     private Integer id;
     private String name;
     private MessageDto lastMessage;
+    private UserInfoDto sender;
 }
