@@ -28,4 +28,4 @@ jobs:
 
       # DB 설정 전 test 제외
       - name: Run Gradle Build (skip tests)
-        run: ./gradlew clean build -x test —no-daemon
+        run: ./gradlew clean build -x test --no-daemon
