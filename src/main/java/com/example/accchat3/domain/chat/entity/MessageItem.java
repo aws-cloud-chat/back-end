@@ -8,25 +8,23 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @DynamoDbBean
-public class UserProfileItem {
+public class MessageItem {
+    private String pk;   // ROOM#R1
+    private String sk;   // MSG#1
 
-    private String pk; //User#1001
-    private String sk; //ROOM#R1, PROFILE, SESSION#
-
-
-    private Long userId;
-    private String username;
-    private String email;
-    private String passwordHash;
-
+    private String messageId;     // MSG#1
+    private Long seq;             // 정렬용 번호
+    private Long senderId;
+    private String senderUsername;
+    private String content;
+    private Long createdAt;       // epochMillis
 
     @DynamoDbPartitionKey
-    public String getPk(){return pk;}
+    public String getPk() { return pk; }
 
     @DynamoDbSortKey
     public String getSk() { return sk; }
