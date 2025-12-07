@@ -15,10 +15,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChatController {
 
 
-
-    @GetMapping("{chatRoomId}")
-    public ResponseEntity<GetChatResponseDto> getChatRooms(@PathVariable Long chatRoomId){
-
-
-    }
 }
