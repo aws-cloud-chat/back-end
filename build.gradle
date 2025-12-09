@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -47,7 +47,10 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:2.8.13'
 
 	// AWS DynamoDB
+    implementation platform('software.amazon.awssdk:bom:2.28.11')
 	implementation 'software.amazon.awssdk:dynamodb:2.25.62'
+	implementation "software.amazon.awssdk:dynamodb-enhanced:2.25.62"
+    implementation 'software.amazon.awssdk:regions'
 }
 
 tasks.named('test') {
