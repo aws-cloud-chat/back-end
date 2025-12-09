@@ -17,10 +17,11 @@ public class UserRoomItem {
 
     private String lastMessageId;           // MSG#3
     private String lastMessageContent;      // "ㅇㅇ 잘듣"
+    private Long lastMessageSenderUserId;
     private String lastMessageSenderUsername;
-    private Long messageUpdatedAt;          // epochMillis 등
-    private String receiverUsername;
-    private Long receiverUserId;
+    private Long lastMessageSeq;
+    private Long messageUpdatedAt;
+
 
 
     @DynamoDbPartitionKey

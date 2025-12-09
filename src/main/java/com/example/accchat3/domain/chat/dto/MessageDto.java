@@ -14,6 +14,6 @@ public class MessageDto {
     private String id;
     private String content;
     private LocalDateTime createdAt;
-    private Integer seq;
+    private Long seq;
     private UserInfoDto sender;
 }
