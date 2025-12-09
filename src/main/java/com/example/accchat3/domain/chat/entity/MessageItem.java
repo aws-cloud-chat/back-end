@@ -13,20 +13,20 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
 @NoArgsConstructor
 @DynamoDbBean
 public class MessageItem {
-    private String pk;   // ROOM#R1
-    private String sk;   // MSG#1
+    private Long pk;   // chatRoomId
+    private Long sk;   // seq
 
     private String messageId;     // MSG#1
-    private Long seq;             // 정렬용 번호
-    private Long senderId;
-    private String senderUsername;
     private String content;
-    private Long createdAt;       // epochMillis
+    private Long createdAt;     // epochMillis
+
+    private Long senderId;
+    private String senderName;
 
     @DynamoDbPartitionKey
-    public String getPk() { return pk; }
+    public Long getPk() { return pk; }
 
     @DynamoDbSortKey
-    public String getSk() { return sk; }
+    public Long getSk() { return sk; }
 
 }

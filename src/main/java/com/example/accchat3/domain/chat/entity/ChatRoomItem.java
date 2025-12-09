@@ -10,22 +10,22 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
 @Getter
 @Setter
 @DynamoDbBean
-public class UserRoomItem {
+public class ChatRoomItem {
 
-    private String pk; // ROOM#1
+    private Long pk; // chatRoomId
     private String sk;
 
     private String lastMessageId;           // MSG#3
     private String lastMessageContent;      // "ㅇㅇ 잘듣"
-    private Long lastMessageSenderUserId;
-    private String lastMessageSenderUsername;
+    private Long lastMessageSenderId;
+    private String lastMessageSenderName;
     private Long lastMessageSeq;
     private Long messageUpdatedAt;
 
 
 
     @DynamoDbPartitionKey
-    public String getPk() { return pk; }
+    public Long getPk() { return pk; }
 
     @DynamoDbSortKey
     public String getSk() { return sk; }

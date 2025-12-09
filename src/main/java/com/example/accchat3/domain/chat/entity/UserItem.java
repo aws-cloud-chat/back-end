@@ -13,22 +13,18 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
 @Setter
 @NoArgsConstructor
 @DynamoDbBean
-public class UserProfileItem {
+public class UserItem {
 
-    private String pk; //User#1001
-    private String sk; //ROOM#R1, PROFILE, SESSION#
+    private Long pk; //userId
 
-
-    private Long userId;
     private String username;
     private String email;
     private String passwordHash;
 
+    private String accessToken;
+    private String refreshToken;
 
     @DynamoDbPartitionKey
-    public String getPk(){return pk;}
-
-    @DynamoDbSortKey
-    public String getSk() { return sk; }
+    public Long getPk(){return pk;}
 
 }

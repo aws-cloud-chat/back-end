@@ -7,24 +7,23 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
+@DynamoDbBean
 @Getter
 @Setter
 @NoArgsConstructor
-@DynamoDbBean
-public class UserSessionItem {
-    private String pk;
-    private String sk;
+public class TestItem {
 
-    private Long userId;
-
-    private String accessToken;
-    private String refreshToken;
-    private Long createdAt;
-    private Long expiresAt;
+    private String pk;   // PARTITION KEY
+    private String sk;   // SORT KEY
+    private String message;
 
     @DynamoDbPartitionKey
-    public String getPk() { return pk; }
+    public String getPk() {
+        return pk;
+    }
 
     @DynamoDbSortKey
-    public String getSk() { return sk; }
+    public String getSk() {
+        return sk;
+    }
 }
