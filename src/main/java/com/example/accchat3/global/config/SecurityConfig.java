@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(possibleAccess).permitAll()
+                        .requestMatchers("/api/**").permitAll()   // 테스트용
                         .anyRequest().authenticated());
 
         return http.build();
