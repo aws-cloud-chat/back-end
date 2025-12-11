@@ -51,6 +51,9 @@ dependencies {
 	implementation 'software.amazon.awssdk:dynamodb:2.25.62'
 	implementation "software.amazon.awssdk:dynamodb-enhanced:2.25.62"
     implementation 'software.amazon.awssdk:regions'
+
+	//Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
