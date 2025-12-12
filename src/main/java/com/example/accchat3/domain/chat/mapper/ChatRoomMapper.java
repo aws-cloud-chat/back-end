@@ -38,8 +38,11 @@ public class ChatRoomMapper {
         return MessageDto.builder()
                 .id(room.getLastMessageId())
                 .content(room.getLastMessageContent())
-                .createdAt(room.getUpdatedAt() == null ? null :
-                        LocalDateTime.ofInstant(room.getUpdatedAt().toInstant(), KST))
+                .createdAt(
+                        room.getUpdatedAt() == null
+                                ? null
+                                : LocalDateTime.ofInstant(room.getUpdatedAt(), KST)
+                )
                 .build();
     }
 

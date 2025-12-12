@@ -5,6 +5,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
+import java.time.Instant;
 import java.util.Date;
 
 @DynamoDbBean
@@ -17,7 +18,7 @@ public class ChatRoom {
     private String lastMessageId;
     private String lastMessageContent;
     private Integer seq;
-    private Date updatedAt;
+    private Instant updatedAt;//Date->Instant Date 타입을 다이나모 디비에서 처리 못함
 
     private Integer senderId;
     private String senderName;
@@ -81,11 +82,11 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("updatedAt")
-    public Date getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
