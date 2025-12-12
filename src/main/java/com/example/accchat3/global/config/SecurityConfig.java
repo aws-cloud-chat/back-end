@@ -39,12 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(possibleAccess).permitAll()
-<<<<<<< HEAD
-                        .requestMatchers("/dynamo/**").permitAll()   // 테스트용 (임시)
-                        .requestMatchers("/api/**").permitAll()   // 테스트용 (임시)
-=======
                         .requestMatchers("/api/**").permitAll()   // 테스트용
->>>>>>> 6e912bf8a0d4ef5be62a7e736a185ddd0f65984a
                         .anyRequest().authenticated());
 
         return http.build();

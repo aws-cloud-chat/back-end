@@ -1,12 +1,12 @@
 package com.example.accchat3.domain.chat.mapper;
 
 
-import com.example.accchat3.domain.auth.entity.User;
+
 import com.example.accchat3.domain.chat.dto.GetChatRoomResponseDto;
 import com.example.accchat3.domain.chat.dto.MessageDto;
 import com.example.accchat3.domain.chat.dto.UserInfoDto;
 import com.example.accchat3.domain.chat.entity.ChatRoom;
-import com.example.accchat3.domain.chat.entity.Message;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
