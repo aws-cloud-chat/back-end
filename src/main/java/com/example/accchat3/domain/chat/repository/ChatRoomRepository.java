@@ -10,6 +10,7 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+import software.amazon.awssdk.enhanced.dynamodb.model.QueryConditional;
 
 import java.util.Optional;
 
@@ -34,14 +35,26 @@ public class ChatRoomRepository {
     * chatRoomId로 방을 찾아 리턴
     * chatRoom 엔티티 안에 lastMessage, sender, receiver 다 있음
 
-     */
+
     public Optional<ChatRoom> findById(Long chatRoomId){
         Key key=Key.builder().partitionValue(chatRoomId).build();
         ChatRoom room=table.getItem(key);
         return Optional.ofNullable(room);
     }
+ */
+    public Optional<ChatRoom> findById(Long chatRoomId) {
+        var result = table.query(r -> r
+                .queryConditional(
+                        QueryConditional.keyEqualTo(
+                                Key.builder().partitionValue(chatRoomId).build()
+                        )
+                )
+                .scanIndexForward(false) // 최신 먼저 (SK 내림차순)
+                .limit(1)
+        );
 
-
+        return result.items().stream().findFirst();
+    }
 
     public void delete(Long chatRoomId) {
         Key key = Key.builder().partitionValue(chatRoomId).build();

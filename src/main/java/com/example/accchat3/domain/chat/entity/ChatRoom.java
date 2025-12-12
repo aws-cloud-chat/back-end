@@ -11,14 +11,14 @@ import java.util.Date;
 @DynamoDbBean
 public class ChatRoom {
     private Integer chatRoomId;
-    private Integer createdAt;
+    private Long createdAt;
 
     private String chatRoomName;
 
     private String lastMessageId;
     private String lastMessageContent;
     private Integer seq;
-    private Instant updatedAt;//Date->Instant Date 타입을 다이나모 디비에서 처리 못함
+    private Long updatedAt;//Date->Instant Date 타입을 다이나모 디비에서 처리 못함
 
     private Integer senderId;
     private String senderName;
@@ -37,11 +37,11 @@ public class ChatRoom {
 
     @DynamoDbSortKey
     @DynamoDbAttribute("createdAt")
-    public Integer getCreatedAt() {
+    public Long getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Long createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -82,11 +82,11 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("updatedAt")
-    public Instant getUpdatedAt() {
+    public Long getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(Long updatedAt) {
         this.updatedAt = updatedAt;
     }
 

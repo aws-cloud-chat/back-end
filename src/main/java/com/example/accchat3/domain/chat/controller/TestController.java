@@ -18,7 +18,7 @@ public class TestController {
         return enhancedClient.table("TestTable", TableSchema.fromBean(TestItem.class));
     }
 
-    @GetMapping("/dynamo/test")
+    @GetMapping("/api/test")
     public String test() {
         TestItem item = new TestItem();
         item.setPk("USER#1");
@@ -29,7 +29,7 @@ public class TestController {
         return "ok";
     }
 
-    @GetMapping("/dynamo/test2")
+    @GetMapping("/api/test2")
     public String test2() {
 
 

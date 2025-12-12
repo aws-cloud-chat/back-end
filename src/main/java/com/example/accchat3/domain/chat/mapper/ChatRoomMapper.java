@@ -10,6 +10,7 @@ import com.example.accchat3.domain.chat.entity.ChatRoom;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -38,11 +39,12 @@ public class ChatRoomMapper {
         return MessageDto.builder()
                 .id(room.getLastMessageId())
                 .content(room.getLastMessageContent())
-                .createdAt(
-                        room.getUpdatedAt() == null
-                                ? null
-                                : LocalDateTime.ofInstant(room.getUpdatedAt(), KST)
-                )
+                .createdAt(room.getUpdatedAt() == null
+                        ? null
+                        : LocalDateTime.ofInstant(
+                        Instant.ofEpochMilli(room.getUpdatedAt()),
+                        KST
+                ))
                 .build();
     }
 
