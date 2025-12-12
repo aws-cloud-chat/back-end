@@ -2,6 +2,7 @@ package com.example.accchat3.domain.chat.repository;
 
 
 import com.example.accchat3.domain.chat.entity.ChatRoom;
+import com.example.accchat3.domain.chat.entity.Message;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,8 @@ import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
 import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
+
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
@@ -27,10 +30,18 @@ public class ChatRoomRepository {
         table.putItem(chatRoom);
     }
 
-    public ChatRoom findById(Long chatRoomId){
+    /*
+    * chatRoomId로 방을 찾아 리턴
+    * chatRoom 엔티티 안에 lastMessage, sender, receiver 다 있음
+
+     */
+    public Optional<ChatRoom> findById(Long chatRoomId){
         Key key=Key.builder().partitionValue(chatRoomId).build();
-        return table.getItem(key);
+        ChatRoom room=table.getItem(key);
+        return Optional.ofNullable(room);
     }
+
+
 
     public void delete(Long chatRoomId) {
         Key key = Key.builder().partitionValue(chatRoomId).build();

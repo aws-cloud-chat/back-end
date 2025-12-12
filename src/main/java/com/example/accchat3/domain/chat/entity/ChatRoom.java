@@ -14,7 +14,7 @@ public class ChatRoom {
 
     private String chatRoomName;
 
-    private Integer lastMessageId;
+    private String lastMessageId;
     private String lastMessageContent;
     private Integer seq;
     private Date updatedAt;
@@ -54,11 +54,11 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("lastMessageId")
-    public Integer getLastMessageId() {
+    public String getLastMessageId() {
         return lastMessageId;
     }
 
-    public void setLastMessageId(Integer lastMessageId) {
+    public void setLastMessageId(String lastMessageId) {
         this.lastMessageId = lastMessageId;
     }
 
@@ -122,6 +122,9 @@ public class ChatRoom {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+
 }
+
 
 
