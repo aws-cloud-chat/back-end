@@ -15,5 +15,4 @@ public class GetChatRoomResponseDto {
     private Integer id;
     private String name;
     private MessageDto lastMessage;
-    private UserInfoDto sender;
 }

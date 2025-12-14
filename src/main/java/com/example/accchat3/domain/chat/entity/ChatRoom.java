@@ -12,12 +12,11 @@ import java.util.Date;
 public class ChatRoom {
     private Integer chatRoomId;
     private Long createdAt;
-
     private String chatRoomName;
 
     private String lastMessageId;
     private String lastMessageContent;
-    private Integer seq;
+    private Long seq;
     private Long updatedAt;//Date->Instant Date 타입을 다이나모 디비에서 처리 못함
 
     private Integer senderId;
@@ -73,11 +72,11 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("seq")
-    public Integer getSeq() {
+    public Long getSeq() {
         return seq;
     }
 
-    public void setSeq(Integer seq) {
+    public void setSeq(Long seq) {
         this.seq = seq;
     }
 

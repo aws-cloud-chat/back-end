@@ -31,17 +31,6 @@ public class ChatRoomRepository {
         table.putItem(chatRoom);
     }
 
-    /*
-    * chatRoomId로 방을 찾아 리턴
-    * chatRoom 엔티티 안에 lastMessage, sender, receiver 다 있음
-
-
-    public Optional<ChatRoom> findById(Long chatRoomId){
-        Key key=Key.builder().partitionValue(chatRoomId).build();
-        ChatRoom room=table.getItem(key);
-        return Optional.ofNullable(room);
-    }
- */
     public Optional<ChatRoom> findById(Long chatRoomId) {
         var result = table.query(r -> r
                 .queryConditional(
