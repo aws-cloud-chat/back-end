@@ -17,7 +17,7 @@ public class ChatRoom {
     private String lastMessageId;
     private String lastMessageContent;
     private Long seq;
-    private Long updatedAt;//Date->Instant Date 타입을 다이나모 디비에서 처리 못함
+    private Long updatedAt;//Date->Long Date 타입을 다이나모 디비에서 처리 못함
 
     private Integer senderId;
     private String senderName;

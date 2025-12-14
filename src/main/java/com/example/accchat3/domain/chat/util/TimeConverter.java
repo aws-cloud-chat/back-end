@@ -12,10 +12,4 @@ public final class TimeConverter {
                 ? null
                 : LocalDateTime.ofInstant(Instant.ofEpochMilli(epochMillis), KST);
     }
-
-/*    public static LocalDateTime kstFromEpochSeconds(Long epochSeconds) {
-        return epochSeconds == null
-                ? null
-                : LocalDateTime.ofInstant(Instant.ofEpochSecond(epochSeconds), KST);
-    }*/
 }

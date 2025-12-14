@@ -17,10 +17,8 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 public class ChatRoomRepository {
-
     private final DynamoDbEnhancedClient enhancedClient;
     private DynamoDbTable<ChatRoom> table;
-
 
     @PostConstruct
     public void init(){
