@@ -5,19 +5,19 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
+import java.time.Instant;
 import java.util.Date;
 
 @DynamoDbBean
 public class ChatRoom {
     private Integer chatRoomId;
-    private Integer createdAt;
-
+    private Long createdAt;
     private String chatRoomName;
 
-    private Integer lastMessageId;
+    private String lastMessageId;
     private String lastMessageContent;
-    private Integer seq;
-    private Date updatedAt;
+    private Long seq;
+    private Long updatedAt;//Date->Long Date 타입을 다이나모 디비에서 처리 못함
 
     private Integer senderId;
     private String senderName;
@@ -36,11 +36,11 @@ public class ChatRoom {
 
     @DynamoDbSortKey
     @DynamoDbAttribute("createdAt")
-    public Integer getCreatedAt() {
+    public Long getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Integer createdAt) {
+    public void setCreatedAt(Long createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -54,11 +54,11 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("lastMessageId")
-    public Integer getLastMessageId() {
+    public String getLastMessageId() {
         return lastMessageId;
     }
 
-    public void setLastMessageId(Integer lastMessageId) {
+    public void setLastMessageId(String lastMessageId) {
         this.lastMessageId = lastMessageId;
     }
 
@@ -72,20 +72,20 @@ public class ChatRoom {
     }
 
     @DynamoDbAttribute("seq")
-    public Integer getSeq() {
+    public Long getSeq() {
         return seq;
     }
 
-    public void setSeq(Integer seq) {
+    public void setSeq(Long seq) {
         this.seq = seq;
     }
 
     @DynamoDbAttribute("updatedAt")
-    public Date getUpdatedAt() {
+    public Long getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Long updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -122,6 +122,9 @@ public class ChatRoom {
     public void setReceiverName(String receiverName) {
         this.receiverName = receiverName;
     }
+
+
 }
+
 
 
