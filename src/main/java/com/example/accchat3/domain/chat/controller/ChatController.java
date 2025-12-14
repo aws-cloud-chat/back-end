@@ -21,7 +21,7 @@ public class ChatController {
 
 
     @GetMapping("/{chatRoomId}")
-    public ResponseEntity<GetChatRoomResponseDto> getChatRoom(@PathVariable Long chatRoomId){
+    public ResponseEntity<GetChatRoomResponseDto> getChatRoom(@PathVariable Integer chatRoomId){
         ChatRoom chatRoom=chatRoomService.getChatRoomById(chatRoomId);
         return ResponseEntity.ok(chatRoomMapper.toDto(chatRoom));
     }

@@ -13,7 +13,7 @@ public class ChatRoomService {
     private final ChatRoomRepository chatRoomRepository;
 
     @Transactional(readOnly = true)
-    public ChatRoom getChatRoomById(Long chatRoomId){
+    public ChatRoom getChatRoomById(Integer chatRoomId){
         return chatRoomRepository.findById(chatRoomId)
                 .orElseThrow(()->new RuntimeException("Chat room not found with id: "+chatRoomId));
 

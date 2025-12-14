@@ -31,7 +31,7 @@ public class ChatRoomRepository {
         table.putItem(chatRoom);
     }
 
-    public Optional<ChatRoom> findById(Long chatRoomId) {
+    public Optional<ChatRoom> findById(Integer chatRoomId) {
         var result = table.query(r -> r
                 .queryConditional(
                         QueryConditional.keyEqualTo(
