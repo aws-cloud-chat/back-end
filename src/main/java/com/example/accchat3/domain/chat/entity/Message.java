@@ -10,7 +10,7 @@ public class Message {
     private Integer chatRoomId;
     private Integer createdAt;
 
-    private Integer messagedId;
+    private String messagedId;
     private String messageContent;
     private Integer seq;
 
@@ -42,10 +42,10 @@ public class Message {
     }
 
     @DynamoDbAttribute("messagedId")
-    public Integer getMessagedId() {
+    public String getMessagedId() {
         return messagedId;
     }
-    public void setMessagedId(Integer messagedId) {
+    public void setMessagedId(String messagedId) {
         this.messagedId = messagedId;
     }
 
