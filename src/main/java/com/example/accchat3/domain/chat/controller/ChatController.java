@@ -28,7 +28,7 @@ public class ChatController {
         return ResponseEntity.ok(chatRoomMapper.toDto(chatRoom));
     }
 
-    @GetMapping("/{chatRoomId}/messages")
+    @GetMapping("/{chatRoomId}/last-message")
     public ResponseEntity<MessageDto> getLastMessage(@PathVariable Integer chatRoomId){
         ChatRoom chatRoom=chatRoomService.getChatRoomById(chatRoomId);
         MessageDto lastMessage=messageMapper.toLastMessageDto(chatRoom);

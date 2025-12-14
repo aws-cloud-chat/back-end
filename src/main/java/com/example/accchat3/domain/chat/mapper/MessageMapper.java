@@ -30,12 +30,4 @@ public class MessageMapper {
                 .build();
     }
 
-    private UserInfoDto toSenderDto(ChatRoom room) {
-        if (room.getSenderId() == null) return null;
-        return UserInfoDto.builder()
-                .id(room.getSenderId())
-                .username(room.getSenderName())
-                .build();
-    }
-
 }
