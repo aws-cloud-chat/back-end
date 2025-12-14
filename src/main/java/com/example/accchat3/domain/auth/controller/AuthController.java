@@ -18,6 +18,7 @@ public class AuthController {
 
     private final UserService userService;
 
+    // 회원 가입
     @PostMapping("/register")
     public ResponseEntity<AccessTokenDTO> register(@RequestBody @Valid CreateUserDTO dto) {
         AccessTokenDTO accessToken = userService.register(dto);
