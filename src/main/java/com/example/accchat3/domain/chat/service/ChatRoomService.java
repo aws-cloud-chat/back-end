@@ -1,6 +1,8 @@
 package com.example.accchat3.domain.chat.service;
 
 import java.util.Optional;
+
+import com.example.accchat3.domain.chat.dto.MessageDto;
 import com.example.accchat3.domain.chat.entity.ChatRoom;
 import com.example.accchat3.domain.chat.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,4 +20,6 @@ public class ChatRoomService {
                 .orElseThrow(()->new RuntimeException("Chat room not found with id: "+chatRoomId));
 
     }
+
+
 }

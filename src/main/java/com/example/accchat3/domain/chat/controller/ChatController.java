@@ -2,6 +2,7 @@ package com.example.accchat3.domain.chat.controller;
 
 
 import com.example.accchat3.domain.chat.dto.GetChatRoomResponseDto;
+import com.example.accchat3.domain.chat.dto.MessageDto;
 import com.example.accchat3.domain.chat.entity.ChatRoom;
 import com.example.accchat3.domain.chat.mapper.ChatRoomMapper;
 import com.example.accchat3.domain.chat.service.ChatRoomService;
@@ -26,5 +27,11 @@ public class ChatController {
         return ResponseEntity.ok(chatRoomMapper.toDto(chatRoom));
     }
 
+    @GetMapping("/{chatRoomId}/messages")
+    public ResponseEntity<MessageDto> getLastMessage(@PathVariable Integer chatRoomId){
+        ChatRoom chatRoom=chatRoomService.getChatRoomById(chatRoomId);
+
+
+    }
 
 }

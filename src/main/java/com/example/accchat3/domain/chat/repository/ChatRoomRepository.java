@@ -1,6 +1,7 @@
 package com.example.accchat3.domain.chat.repository;
 
 
+import com.example.accchat3.domain.chat.dto.MessageDto;
 import com.example.accchat3.domain.chat.entity.ChatRoom;
 import com.example.accchat3.domain.chat.entity.Message;
 import jakarta.annotation.PostConstruct;
@@ -43,8 +44,11 @@ public class ChatRoomRepository {
         return result.items().stream().findFirst();
     }
 
+
     public void delete(Long chatRoomId) {
         Key key = Key.builder().partitionValue(chatRoomId).build();
         table.deleteItem(key);
     }
+
+
 }
