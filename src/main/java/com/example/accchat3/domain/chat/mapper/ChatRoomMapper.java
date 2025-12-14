@@ -27,30 +27,4 @@ public class ChatRoomMapper {
                 .build();
     }
 
- /*   private MessageDto toLastMessageDto(ChatRoom room) {
-        if (room.getLastMessageId() == null) return null;
-
-        UserInfoDto sender = (room.getSenderId() == null) ? null
-                : UserInfoDto.builder()
-                .id(room.getSenderId())
-                .username(room.getSenderName())
-                .build();
-
-        return MessageDto.builder()
-                .id(room.getLastMessageId())
-                .content(room.getLastMessageContent())
-                .seq(room.getSeq())
-                .sender(sender)
-                .createdAt(TimeConverter.kstFromEpochMillis(room.getCreatedAt()))
-                .build();
-    }
-
-    private UserInfoDto toSenderDto(ChatRoom room) {
-        if (room.getSenderId() == null) return null;
-        return UserInfoDto.builder()
-                .id(room.getSenderId())
-                .username(room.getSenderName())
-                .build();
-    }*/
-
 }

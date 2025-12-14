@@ -5,6 +5,7 @@ import com.example.accchat3.domain.chat.dto.GetChatRoomResponseDto;
 import com.example.accchat3.domain.chat.dto.MessageDto;
 import com.example.accchat3.domain.chat.entity.ChatRoom;
 import com.example.accchat3.domain.chat.mapper.ChatRoomMapper;
+import com.example.accchat3.domain.chat.mapper.MessageMapper;
 import com.example.accchat3.domain.chat.service.ChatRoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChatController {
     private final ChatRoomService chatRoomService;
     private final ChatRoomMapper chatRoomMapper;
-
+    private final MessageMapper messageMapper;
 
     @GetMapping("/{chatRoomId}")
     public ResponseEntity<GetChatRoomResponseDto> getChatRoom(@PathVariable Integer chatRoomId){
@@ -30,8 +31,8 @@ public class ChatController {
     @GetMapping("/{chatRoomId}/messages")
     public ResponseEntity<MessageDto> getLastMessage(@PathVariable Integer chatRoomId){
         ChatRoom chatRoom=chatRoomService.getChatRoomById(chatRoomId);
-
-
+        MessageDto lastMessage=messageMapper.toLastMessageDto(chatRoom);
+        return ResponseEntity.ok(lastMessage);
     }
 
 }
